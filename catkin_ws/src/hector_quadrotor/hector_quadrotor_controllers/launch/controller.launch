@@ -1,0 +1,21 @@
+<launch>
+
+  <!-- Order is important! -->
+  <arg name="controllers" default="
+    controller/position
+    controller/velocity
+    controller/attitude
+    "/>
+   <arg name="controller_name" default="uav_controller" />
+   <arg name="estop_relay_name" default="uav_estop_relay" />
+  <rosparam ns="controller" file="$(find hector_quadrotor_controllers)/params/controller.yaml" />
+  <rosparam file="$(find hector_quadrotor_controllers)/params/params.yaml" />
+
+  <node name="$(arg controller_name)" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
+    $(arg controllers) --shutdown-timeout 3"/>
+
+  <node name="$(arg estop_relay_name)" pkg="topic_tools" type="relay" args="/estop estop">
+    <param name="lazy" value="true" />
+  </node>
+
+</launch>

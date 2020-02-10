@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<launch>
+ <arg name="car_shape" value="blue/innok_heros_4wtractor_blue.xacro"/>
+ <arg name="car_cam" value="blue/innok_heros_4wtractor_with_cam_blue.xacro"/>
+ <group ns="B/car1">
+  <include file="$(find innok_heros_gazebo)/launch/spawn_innok_vehicle.launch">
+   <arg name="car_name" value="car1"/>
+   <arg name="model_name" value="carB1"/>
+   <arg name="tf_prefix" value="B"/>
+   <arg name="x" value="-10"/>
+   <arg name="y" value="9"/>
+   <arg name="car_model" value="$(arg car_shape)"/>
+  </include>
+ </group>
+ <group ns="B/car2">
+  <include file="$(find innok_heros_gazebo)/launch/spawn_innok_vehicle.launch">
+   <arg name="car_name" value="car2"/>
+    <arg name="model_name" value="carB2"/>
+   <arg name="tf_prefix" value="B"/>
+   <arg name="x" value="-10"/>
+   <arg name="y" value="-9"/>
+   <arg name="car_model" value="$(arg car_shape)"/>
+  </include>
+ </group>
+</launch>

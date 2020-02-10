@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!--
+Description of the caster module for the Innok Heros mobile platform.
+
+
+Software License Agreement (BSD)
+
+\authors Jonathan Hechtbauer
+\maintainer Sabrina Heerklotz <sh@innok-robotics.de>
+\copyright Copyright (c) 2015, Innok Robotics GmbH, All rights reserved
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="heros_caster">		
+<xacro:macro name="heros_caster" params="dx">
+
+  <link name="caster_top">
+    <inertial>
+      <origin xyz="0.083 0 -0.024" rpy="0 0 0" />
+      <mass value="2.56" />
+      <inertia ixx="0.007" ixy="0" ixz="0" iyy="0.008" iyz="0" izz="0.014" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://innok_heros_description/meshes/caster_top.STL" />
+      </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.08 0 -0.025" rpy="0 0 0" />
+      <geometry>
+        <box size= "0.160 0.160 0.05" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="caster_top_joint" type="fixed">
+    <origin xyz="${dx} 0 -0.006" rpy="0 0 0" />
+    <parent link="beam_link" />
+    <child link="caster_top" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <link name="caster_bot">
+    <inertial>
+      <origin xyz="-0.023 0 -0.062" rpy="0 0 0" />
+      <mass value="2.9" />
+      <inertia ixx="0.016" ixy="0" ixz="0.005" iyy="0.016" iyz="0" izz="0.01" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://innok_heros_description/meshes/caster_bot.STL" />
+      </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.05" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.07" length="0.09" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="caster_bot_joint" type="continuous">
+    <origin xyz="0.083 0 -0.035" rpy="0 0 0" />
+    <parent link="caster_top" />
+    <child link="caster_bot" />
+    <axis xyz="0 0 1" />
+  </joint>
+
+
+  <link name="caster_wheel">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="5" />
+      <inertia  ixx="0.017" ixy="0" ixz="0" iyy="0.030" iyz="0" izz="0.017" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://innok_heros_description/meshes/caster_wheel.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+
+      <origin xyz="0 0.01 0 " rpy="-1.57 0 0" />
+      <geometry>
+        <cylinder radius="0.125" length="0.085" />
+      </geometry>
+    </collision>
+  </link>
+
+ <gazebo reference="caster_wheel">
+    <!-- <mu1>0.2</mu1>
+    <mu2>0.2</mu2>-->
+    <material>Gazebo/Grey</material>
+  </gazebo> 
+
+  <joint name="caster_wheel_joint" type="continuous">
+    <origin xyz="-0.08 -0.014 -0.17" rpy="0 0 0.003" />
+    <parent link="caster_bot" />
+    <child link="caster_wheel" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+
+</xacro:macro>
+</robot>

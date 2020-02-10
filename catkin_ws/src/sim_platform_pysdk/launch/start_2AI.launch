@@ -1,0 +1,6 @@
+<?xml version='1.0.0'?>
+
+<launch>
+	<node name="AI_A" pkg="sim_platform_pysdk" type="computer_A.py" required="true"/>
+	<node name="AI_B" pkg="sim_platform_pysdk" type="computer_B.py" required="true"/>
+</launch>

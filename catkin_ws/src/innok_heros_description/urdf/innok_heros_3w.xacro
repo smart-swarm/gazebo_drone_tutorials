@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<!--
+Software License Agreement (BSD)
+
+\authors Jonathan Hechtbauer
+\maintainer Sabrina Heerklotz <sh@innok-robotics.de>
+\copyright Copyright (c) 2015, Innok Robotics GmbH, All rights reserved
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+
+<robot name="innok_heros_3" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:property name="PI" value="3.1415926535897931"/>
+  <xacro:property name="wheel_radius" value="0.160" />
+  <xacro:property name="wheel_width"  value="0.160" />
+  <xacro:property name="wheel_mass"   value="5.4" />
+  <xacro:property name="wheel_seperation" value="0.580" />
+  <xacro:property name="camera_link"   value="0.05" />
+
+  <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_base_link.xacro"/>
+  <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_wheel.xacro" />
+  <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_drive.xacro" />
+  <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_caster.xacro" />
+  <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_battery.xacro" />
+  <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_mounting_plate.xacro" />
+
+  <xacro:include filename="$(find innok_heros_description)/urdf/ROS/heros_joint_pub.xacro" />
+  <xacro:include filename="$(find innok_heros_description)/urdf/ROS/heros_diff_drive.xacro" />
+
+  <!-- heros modules--> 
+  <heros_base_link   							/>
+  <heros_drive   	  front_rear='rear'     dx='0.018' flip_z='1'/>
+  <heros_caster  	 	         	dx='0.637'		/>
+  <heros_battery 	  name='battery_box'    dx='0.336'		/>
+  <heros_mounting_plate   wheels='3'		dx='-0.02'		/>
+
+  <!-- heros ROS plugins-->
+  <heros_joint_pub joints='joint_base_wheel_rear_left, joint_base_wheel_rear_right, caster_bot_joint, caster_wheel_joint'					/>
+  <heros_diff_drive 							/> 
+
+</robot>

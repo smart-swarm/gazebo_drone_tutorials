@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="z" default="0.0"/>
+  <arg name="vx" default="0.0"/>
+  <arg name="vy" default="0.0"/>
+  <arg name="vz" default="0.4"/>
+  <arg name="tf_prefix" default="$(optenv ROS_NAMESPACE)"/>
+  <arg name="vehicle_name" default="car"/>
+  <arg name="number" default="1"/>
+  <arg name="sdf_file" default="/home/zhenglong/.gazebo/models/my_bullet_control/model.sdf"/>
+
+
+  <!-- <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="true" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="false"/>
+  </include> -->
+
+  <!-- <node pkg="gazebo_ros" type="spawn_model" name="$(arg vehicle_name)$(arg number)_bullet" 
+      args="-file $(arg sdf_file) -sdf -x $(arg x) -y $(arg y) -z $(arg z) -model $(arg vehicle_name)$(arg number)_bullet" >
+    <param name="tf_prefix" value="$(arg tf_prefix)"/>
+  </node> -->
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description"
+	 command="$(find xacro)/xacro --inorder '$(find bullet_control)/urdf/model.urdf' name:=$(arg vehicle_name)$(arg number)_bullet_description" />
+  
+  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <node name="$(arg vehicle_name)$(arg number)_bullet" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+	args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -param robot_description -model $(arg vehicle_name)$(arg number)_bullet">
+        <param name="tf_prefix" value="$(arg tf_prefix)"/>
+  </node>
+  
+  <!-- publish robot's state to tf using joint_states and robot_description-->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="$(arg vehicle_name)$(arg number)_bullet_st_pub" >
+    <param name="tf_prefix" value="$(arg tf_prefix)"/>
+  </node>
+
+</launch>
+

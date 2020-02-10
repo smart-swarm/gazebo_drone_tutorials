@@ -1,0 +1,6 @@
+<?xml version='1.0.0'?>
+
+<launch>
+	<node name="computer" pkg="sim_platform_pysdk" type="computer.py" required="true"/>
+	<node name="player" pkg="sim_platform_pysdk" type="player.py" required="true"/>
+</launch>

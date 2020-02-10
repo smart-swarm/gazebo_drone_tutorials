@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="judge_system" type="judge_system_node" name="judge_system_node" output="screen">    
+        <param name="bullet_limit" value="50" />
+        <param name="car_count_a" value="0" />
+        <param name="car_count_b" value="0" />
+        <param name="uav_count_a" value="8" />
+        <param name="uav_count_b" value="5" />
+        <param name="blood_full" value="100.0" />
+        <param name="speed_bullet" value="10.0" />
+        <param name="decay_factor" value="1.0" />
+        <param name="boom_raidus" value="1.0" />
+        <param name="attack_duration" value="0.2" />
+        <param name="bullet_power_factor" value="0.5" />
+        <param name="bullet_power_base" value="20.0" /> 
+        <param name="time_game_last" value="150.0" />   
+    </node>
+
+    <node pkg="judge_system" type="judge_system_gui_node" name="judge_system_gui_node" output="screen"/>
+</launch>
+
+

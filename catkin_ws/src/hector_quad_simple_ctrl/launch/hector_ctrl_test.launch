@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="hector_quad_simple_ctrl" type="hector_quad_simple_ctrl_node" name="hector_quad_simple_ctrl_node1" output="screen">
+        <param name="ctrl_mode" type="int" value="0" />
+        <!-- <remap from="/command/twist" to="/uav1/command/twist"/> -->
+        <remap from="/command/pose" to="/uav1/command/pose"/>
+    </node>
+
+        
+    <node pkg="hector_quad_simple_ctrl" type="hector_quad_simple_ctrl_node" name="hector_quad_simple_ctrl_node2" output="screen">
+        <param name="ctrl_mode" type="int" value="0" />
+        <!-- <remap from="/command/twist" to="/uav2/command/twist"/> -->
+        <remap from="/command/pose" to="/uav2/command/pose"/>
+    </node>
+
+        
+    <node pkg="hector_quad_simple_ctrl" type="hector_quad_simple_ctrl_node" name="hector_quad_simple_ctrl_node3" output="screen">
+        <param name="ctrl_mode" type="int" value="0" />
+        <!-- <remap from="/command/twist" to="/uav3/command/twist"/> -->
+        <remap from="/command/pose" to="/uav3/command/pose"/>
+    </node>
+
+        
+    <node pkg="hector_quad_simple_ctrl" type="hector_quad_simple_ctrl_node" name="hector_quad_simple_ctrl_node4" output="screen">
+        <param name="ctrl_mode" type="int" value="0" />
+        <!-- <remap from="/command/twist" to="/uav4/command/twist"/> -->
+        <remap from="/command/pose" to="/uav4/command/pose"/>
+    </node>
+
+</launch>

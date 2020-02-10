@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<launch>
+ <arg name="car_shape" value="blue/innok_heros_4wtractor_blue.xacro"/>
+ <arg name="car_cam" value="blue/innok_heros_4wtractor_with_cam_blue.xacro"/>
+ <group ns="B/car1">
+  <include file="$(find innok_heros_gazebo)/launch/spawn_innok_vehicle.launch">
+   <arg name="car_name" value="car1"/>
+   <arg name="model_name" value="carB1"/>
+   <arg name="tf_prefix" value="B"/>
+   <arg name="x" value="-12"/>
+   <arg name="y" value="6"/>
+   <arg name="car_model" value="$(arg car_shape)"/>
+  </include>
+ </group>
+ <group ns="B/car2">
+  <include file="$(find innok_heros_gazebo)/launch/spawn_innok_vehicle.launch">
+   <arg name="car_name" value="car2"/>
+    <arg name="model_name" value="carB2"/>
+   <arg name="tf_prefix" value="B"/>
+   <arg name="x" value="-12"/>
+   <arg name="y" value="3"/>
+   <arg name="car_model" value="$(arg car_shape)"/>
+  </include>
+ </group>
+ <group ns="B/car3">
+  <include file="$(find innok_heros_gazebo)/launch/spawn_innok_vehicle.launch">
+   <arg name="car_name" value="car3"/>
+      <arg name="model_name" value="carB3"/>
+   <arg name="tf_prefix" value="B"/>
+   <arg name="x" value="-12"/>
+   <arg name="y" value="0"/>
+   <arg name="car_model" value="$(arg car_shape)"/>
+  </include>
+ </group>
+ <group ns="B/car4">
+  <include file="$(find innok_heros_gazebo)/launch/spawn_innok_vehicle.launch">
+   <arg name="car_name" value="car4"/>
+      <arg name="model_name" value="carB4"/>
+   <arg name="tf_prefix" value="B"/>
+   <arg name="x" value="-12"/>
+   <arg name="y" value="-3"/>
+   <arg name="car_model" value="$(arg car_shape)"/>
+  </include>
+ </group>
+ <group ns="B/car5">
+  <include file="$(find innok_heros_gazebo)/launch/spawn_innok_vehicle.launch">
+   <arg name="car_name" value="car5"/>
+      <arg name="model_name" value="carB5"/>
+   <arg name="tf_prefix" value="B"/>
+   <arg name="x" value="-12"/>
+   <arg name="y" value="-6"/>
+   <arg name="car_model" value="$(arg car_shape)"/>
+  </include>
+ </group>
+</launch>

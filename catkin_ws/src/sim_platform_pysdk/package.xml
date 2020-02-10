@@ -1,0 +1,17 @@
+<package>
+	<name>sim_platform_pysdk</name>
+	<version>1.0.0</version>
+	<description>
+		Controllers developed for the Judge system
+	</description>
+	<maintainer email="mail@mail.com">Mike Hamer</maintainer>
+	
+	<buildtool_depend>catkin</buildtool_depend>
+	
+	<build_depend>cmake_modules</build_depend>
+	<run_depend>cmake_modules</run_depend>
+
+	<license>BSD</license>
+</package>
+
+

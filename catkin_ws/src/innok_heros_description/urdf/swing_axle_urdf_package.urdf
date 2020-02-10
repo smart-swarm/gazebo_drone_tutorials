@@ -1,0 +1,173 @@
+<robot
+  name="swing_axle_urdf_package">
+  <link
+    name="swing_axle_top">
+    <inertial>
+      <origin
+        xyz="0.21389 0.15931 -0.29648"
+        rpy="0 0 0" />
+      <mass
+        value="1.619" />
+      <inertia
+        ixx="0.0013386"
+        ixy="1.3753E-12"
+        ixz="-3.8836E-19"
+        iyy="0.00079466"
+        iyz="1.5256E-12"
+        izz="0.00064066" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_axle_urdf_package/meshes/swing_axle_top.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.49412 0.49412 0.49412 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_axle_urdf_package/meshes/swing_axle_top.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="swing_axle_bot">
+    <inertial>
+      <origin
+        xyz="-1.254E-10 -0.025528 -1.137E-10"
+        rpy="0 0 0" />
+      <mass
+        value="3.1467" />
+      <inertia
+        ixx="0.0029396"
+        ixy="5.8521E-12"
+        ixz="6.2003E-11"
+        iyy="0.019322"
+        iyz="5.3061E-12"
+        izz="0.017122" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_axle_urdf_package/meshes/swing_axle_bot.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89412 0.91373 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_axle_urdf_package/meshes/swing_axle_bot.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="swing_axle_joint"
+    type="revolute">
+    <origin
+      xyz="0.21389 0.29648 0.16159"
+      rpy="1.5708 0 0" />
+    <parent
+      link="swing_axle_top" />
+    <child
+      link="swing_axle_bot" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="caster_left">
+    <inertial>
+      <origin
+        xyz="-5.8322E-08 -0.0014432 -1.3715E-10"
+        rpy="0 0 0" />
+      <mass
+        value="1.3817" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_axle_urdf_package/meshes/caster_left.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_axle_urdf_package/meshes/caster_left.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="caster_left_joint"
+    type="revolute">
+    <origin
+      xyz="-0.215 -0.055 0"
+      rpy="0 0 0" />
+    <parent
+      link="swing_axle_bot" />
+    <child
+      link="caster_left" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="caster_right" />
+  <joint
+    name="caster_right_joint"
+    type="revolute">
+    <origin
+      xyz="0.215 -0.055 0"
+      rpy="0 0 0" />
+    <parent
+      link="swing_axle_bot" />
+    <child
+      link="caster_right" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>

@@ -1,0 +1,64 @@
+
+ <group ns="A/car1">
+   <arg name="x" value="10"/>
+   <arg name="y" value="9"/>
+   <arg name="yaw" value="3.14"/>
+ </group>
+ <group ns="A/car2">
+   <arg name="x" value="10"/>
+   <arg name="y" value="-9"/>
+   <arg name="yaw" value="3.14"/>
+ </group>
+ <group ns="A/car3">
+   <arg name="x" value="20"/>
+   <arg name="y" value="0"/>
+   <arg name="yaw" value="3.14"/>
+ </group>
+
+ <group ns="A/uav1">
+   <arg name="x" value="20"/>
+   <arg name="y" value="15"/>
+   <arg name="yaw" value="3.14"/>
+ </group>
+ <group ns="A/uav2">
+   <arg name="x" value="10"/>
+   <arg name="y" value="0"/>
+   <arg name="yaw" value="3.14"/>
+ </group>
+ <group ns="A/uav3">
+   <arg name="x" value="20"/>
+   <arg name="y" value="-15"/>
+   <arg name="yaw" value="3.14"/>
+ </group>
+
+
+ <group ns="B/car1">
+   <arg name="x" value="-10"/>
+   <arg name="y" value="9"/>
+ </group>
+ <group ns="B/car2">
+   <arg name="x" value="-10"/>
+   <arg name="y" value="-9"/>
+ </group>
+ <group ns="B/car3">
+   <arg name="x" value="-20"/>
+   <arg name="y" value="0"/>
+ </group>
+
+
+<group ns="B/uav1">
+   <arg name="x" value="-20"/>
+   <arg name="y" value="15"/>
+ </group>
+ <group ns="B/uav2">
+   <arg name="x" value="-10"/>
+   <arg name="y" value="0"/>
+ </group>
+ <group ns="B/uav3">
+   <arg name="x" value="-20"/>
+   <arg name="y" value="-15"/>
+ </group>
+
+
+
+

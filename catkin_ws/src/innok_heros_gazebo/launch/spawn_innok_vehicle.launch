@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="car_name" default="car"/>
+  <arg name="model_name" default="car"/>
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="yaw" default="0.0"/>
+  <arg name="tf_prefix" default="$(optenv ROS_NAMESPACE)"/>
+  <arg name="car_model" default="innok_heros_4wtractor"/>
+
+  <arg name="world_frame" default="/world"/> 
+  <arg name="base_link_frame" default="$(arg tf_prefix)/base_link"/>
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description"
+	 command="$(find xacro)/xacro --inorder '$(find innok_heros_description)/urdf/$(arg car_model)' car_name:=$(arg car_name) car_ns:=$(arg tf_prefix) name:=$(arg car_name)_description" />
+  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <node name="$(arg car_name)" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+	args="-urdf -x $(arg x) -y $(arg y) -z 0.5 -Y $(arg yaw) -param robot_description -model $(arg model_name)">
+        <param name="tf_prefix" value="$(arg tf_prefix)/car_name"/>
+  </node>
+</launch>

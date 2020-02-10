@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- <arg name="ctrl_mode" default="position"/> -->
+    <arg name="k_xy" default="0.5"/> 
+    <arg name="k_z" default="0.5"/> 
+    <arg name="k_yaw" default="0.5"/> 
+    <node pkg="hector_quad_simple_ctrl" type="hector_quad_simple_ctrl_pose_node" name="hector_quad_simple_ctrl_pose_node" output="screen">
+        <!-- <param name="control_mode" value="$(arg ctrl_mode)" /> -->
+        <param name="p_xy" value="$(arg k_xy)" />
+        <param name="p_z" value="$(arg k_z)" />
+        <param name="p_yaw" value="$(arg k_yaw)" />
+    </node>
+</launch>
+
+

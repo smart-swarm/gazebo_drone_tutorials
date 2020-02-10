@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<robot name="my_bullet_control">
+  <link name="my_bullet_control__link">
+    <inertial>
+      <mass value="0.0011"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
+      <gravity>0</gravity>
+    <collision name="my_bullet_control__collision">
+      <origin rpy="0  0  0" xyz="0    0    0.06"/>
+      <geometry>
+        <sphere radius="0.06"/>
+      </geometry>
+    </collision>
+    <visual name="my_bullet_control__visual">
+      <origin rpy="0  0  0" xyz="0    0    0.06"/>
+      <geometry>
+        <sphere radius="0.06"/>
+      </geometry>
+    </visual>
+  </link>
+<gazebo>
+  <plugin name="bullet_control" filename="libbullet_plugin.so"/>
+</gazebo>
+</robot>

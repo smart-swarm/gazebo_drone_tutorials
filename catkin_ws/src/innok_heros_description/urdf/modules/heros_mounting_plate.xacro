@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+Description of the mounting plate module for the Innok Heros mobile platform.
+
+
+Software License Agreement (BSD)
+
+\authors Jonathan Hechtbauer
+\maintainer Sabrina Heerklotz <sh@innok-robotics.de>
+\copyright Copyright (c) 2015, Innok Robotics GmbH, All rights reserved
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="heros_plate">		
+<xacro:macro name="heros_mounting_plate" params="wheels dx">
+
+  <link name="mounting_plate">
+    <inertial>
+      <origin
+        xyz="0.319 0 -0.002" rpy="0 0 0" />
+      <mass value="4.35" />
+      <inertia ixx="0.133" ixy="0" ixz="0" iyy="0.278" iyz="0" izz="0.410" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://innok_heros_description/meshes/mounting_plate_${wheels}w.STL" />
+      </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.46 0 -0.002" rpy="0 0 0" />
+      <geometry>
+        <box size="0.92 0.72 0.004"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="mounting_plate_joint" type="fixed">
+    <origin xyz=" ${dx} 0 0.05" rpy="0 0 0" />
+    <parent link="beam_link" />
+    <child link="mounting_plate" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+</xacro:macro>
+</robot>

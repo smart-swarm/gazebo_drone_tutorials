@@ -1,0 +1,4 @@
+#!/bin/bash
+./start_uav1.sh
+python /home/zhenglong/apriltag_ws/src/hector_quad_simple_ctrl/scripts/takeoff_land_node.py uav1 takeoff
+

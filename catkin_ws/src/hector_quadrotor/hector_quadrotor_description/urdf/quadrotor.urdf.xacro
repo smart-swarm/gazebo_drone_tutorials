@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<robot
+  name="quadrotor"
+  xmlns:xacro="http://www.ros.org/wiki/xacro"
+>
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+    
+    <!-- Included URDF Files -->
+    <xacro:include filename="$(find hector_quadrotor_description)/urdf/quadrotor_base.urdf.xacro" />
+    <!-- <xacro:include filename="$(find dji_m100_description)/urdf/gimbal.urdf.xacro" /> -->
+    <!-- Instantiate quadrotor_base_macro once (has no parameters atm) -->
+    <xacro:quadrotor_base_macro />
+    <!-- <xacro:dji_m100_gimbal /> -->
+
+</robot>

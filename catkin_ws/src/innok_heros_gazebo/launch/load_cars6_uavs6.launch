@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+  <include file="$(find innok_heros_gazebo)/launch/A/cars_A3.launch"/>
+  <include file="$(find innok_heros_gazebo)/launch/A/uavs_A3.launch"/>
+
+  <include file="$(find innok_heros_gazebo)/launch/B/cars_B3.launch"/>
+  <include file="$(find innok_heros_gazebo)/launch/B/uavs_B3.launch"/>
+
+</launch>

@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+Description of the tractor wheel module for the Innok Heros mobile platform.
+
+
+Software License Agreement (BSD)
+
+\authors Jonathan Hechtbauer
+\maintainer Sabrina Heerklotz <sh@innok-robotics.de>
+\copyright Copyright (c) 2015, Innok Robotics GmbH, All rights reserved
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="heros_wheel">		
+<xacro:macro name="heros_wheel" params="front_rear left_right flip_y flip_z">
+
+  <link name="wheel_${front_rear}_${left_right}">
+    <collision>
+      <origin xyz="0 0.115 0" rpy="${-PI/2} 0 0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}" />
+      </geometry>
+    </collision>			
+    <visual>
+      <origin xyz="0 0.115 0" rpy="0 0 ${-PI/2}"/>
+      <geometry>
+        <mesh filename="package://innok_heros_description/meshes/wheel_tractor_large.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>			
+    <inertial>
+      <origin xyz="0 0.115 0" rpy="0 0 0"/>
+      <mass value="${wheel_mass}"/>
+      <inertia ixx="0.046" ixy="0" ixz="0" iyy="0.072" iyz="0" izz="0.045" />
+    </inertial>		
+  </link>
+		
+  <gazebo reference="wheel_${front_rear}_${left_right}">
+    <gravity>true</gravity>
+    <mu1>1</mu1>
+    <mu2>1</mu2>
+    <kd>1</kd>
+    <kp>10000000000.0</kp>
+    <fdir1>0 0 1</fdir1>
+    <selfCollide>false</selfCollide>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <joint name="joint_base_wheel_${front_rear}_${left_right}" type="continuous">
+    <parent link="drive_box_${front_rear}"/>
+    <child link="wheel_${front_rear}_${left_right}"/>
+    <origin xyz="0.063 ${flip_y*flip_z * 0.162} -0.184" rpy="0 0 ${PI/2 - PI/2*flip_y*flip_z }"/>
+    <axis xyz="0 ${flip_y * 1} 0" />
+  </joint>
+		
+  <transmission name="trans_wheel_${front_rear}_${left_right}">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_base_wheel_${front_rear}_${left_right}">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_wheel_${front_rear}_${left_right}">
+      <mechanicalReduction>100</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+</xacro:macro>
+</robot>
