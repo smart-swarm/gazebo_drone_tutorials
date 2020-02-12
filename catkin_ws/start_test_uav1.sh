@@ -7,7 +7,7 @@ echo "loading gazebo world..."
 roslaunch innok_heros_gazebo load_world_60x40.launch &
 sleep 10
 echo "loading uav and car..."
-roslaunch innok_heros_gazebo uavs_A1.launch &
+roslaunch hector_quadrotor_gazebo spawn_one_quadrotors.launch &
 sleep 5
 
 sleep 30
