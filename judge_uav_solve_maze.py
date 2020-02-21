@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 import rospy
 import math
-from nav.msg import Odometry
+from nav_msgs.msg import Odometry
 target_x = 12
-target_y = 10
+target_y = 9
 
 def pose_CB(data):
-    print(data)
+    # print(data)
     x = data.pose.pose.position.x
     y = data.pose.pose.position.y
     dist = math.sqrt((x-target_x)*(x-target_x)+(y-target_y)*(y-target_y))
@@ -21,7 +21,7 @@ def judge():
     # name for our 'listener' node so that multiple listeners can
     # run simultaneously.
     rospy.init_node('sub_pose_test', anonymous=True)
-    rospy.Subscriber("/uav1/groundtruth/state", Odometry, pose_CB)
+    rospy.Subscriber("/uav1/ground_truth/state", Odometry, pose_CB)
 
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()
