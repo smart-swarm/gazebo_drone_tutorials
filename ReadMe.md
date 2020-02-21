@@ -8,3 +8,6 @@ https://zhuanlan.zhihu.com/p/106032638
 ```
 https://zhuanlan.zhihu.com/p/108374566
 ```
+![maze_easy.png][1]
+
+[1]: https://github.com/smart-swarm/gazebo_drone_tutorials/img/maze_easy.png
