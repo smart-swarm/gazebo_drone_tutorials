@@ -9,3 +9,5 @@ https://zhuanlan.zhihu.com/p/106032638
 https://zhuanlan.zhihu.com/p/108374566
 ```
 ![maze_easy](https://github.com/smart-swarm/gazebo_drone_tutorials/blob/master/img/maze_easy.png)
+
+![maze_easy_data](https://github.com/smart-swarm/gazebo_drone_tutorials/blob/master/img/maze_easy_data.png)
