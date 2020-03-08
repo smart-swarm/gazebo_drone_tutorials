@@ -79,19 +79,12 @@ class DroneInterface:
             
             cmd.angular.z = self.k_yaw * (self.target_point.angular.z - euler_angle.z)
         self.move_cmd_send(cmd)
-    
-    # def sub_target_pose(self, msg):
-    #     self.target_point = msg
-    #     self.get_target = True
-
-
-
-    
+        
 
 if __name__ == "__main__":
     rospy.init_node('DroneInterface1')
-    drone_1 = DroneInterface('/A/uav1/ground_truth/state', '/A/uav1/velocity_cmd')
-    # sub_target = rospy.Subscriber('target_point', drone_1.set_target_point)
+    drone_1 = DroneInterface('/uav1/ground_truth/state', '/A/uav1/velocity_cmd')
+    sub_target1 = rospy.Subscriber('/uav1/target_point', drone_1.set_target_point)
     target = Twist()
     target.linear.x = 5
     target.linear.y = 4
