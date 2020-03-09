@@ -103,7 +103,7 @@ public:
     velocity.twist.linear.y = vel_msg->linear.y;
     velocity.twist.linear.z = vel_msg->linear.z;
     velocity.twist.angular.z = vel_msg->angular.z;
- 	if (_res > -1){
+ 	if (_res > 0){
  		velocity_publisher_.publish(velocity);
  	}
   }
