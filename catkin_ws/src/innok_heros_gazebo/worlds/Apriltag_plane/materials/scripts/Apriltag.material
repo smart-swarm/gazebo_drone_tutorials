@@ -1,0 +1,16 @@
+material RepeatedApriltag
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        // Relative to the location of the material script
+        texture ../textures/Map_PlanB_spots.jpg
+        // Repeat the texture over the surface
+        scale 1.0 1.0
+      }
+    }
+  }
+}
