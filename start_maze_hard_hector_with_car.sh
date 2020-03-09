@@ -15,6 +15,9 @@ sh scripts/uav_arm.sh 1 /dev/null 2>&1 &
 echo "all uav are ready to takeoff..."
 sleep 5
 roslaunch sc_gazebo add_car_to_world.launch &
+sleep 5
+python ../judge_uav_solve_maze.py
+sleep 5
 
 echo "simulation platform ready..."
 sleep 1

@@ -12,6 +12,7 @@
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 #include <hector_uav_msgs/EnableMotors.h>
 #include <actionlib/client/simple_action_client.h>
+#include "authorized_check.h"
 
 namespace hector_quadrotor
 {
@@ -35,12 +36,33 @@ private:
   double yaw_;
 
   std::string base_link_frame_, base_stabilized_frame_, world_frame_;
+  int32_t _res = -1;
 
 public:
   Teleop()
   {
+  	AuthorizedCheck ac;
+    // "172.17.170.205" 为远程服务端ip
+    ac.init(std::string("101.200.54.209"), 8080);
+    // 构造请求，填充token，目前不进行token校验，随便填一个string即可
+    ac.gen_request("token_test");
+    // 执行鉴权判断
+    _res = ac.run_check();
+    std::cout << "res: " << _res << std::endl;
+     if (_res == 0) {
+        std::cout << "author failed, exit!!" << std::endl;
+    } else if (_res == 1) {
+        std::cout << "author success, easy mode" << std::endl;
+    } else if (_res == 2) {
+        std::cout << "author success, middle mode" << std::endl;
+    } else if (_res == 3) {
+        std::cout << "author success, hard mode" << std::endl;
+    } else {
+        std::cout << "FATAL!! unexpected result!!" << std::endl;
+    }
+    
     ros::NodeHandle private_nh("~");
-
+	
     // TODO dynamic reconfig
     std::string control_mode;
     private_nh.param<std::string>("control_mode", control_mode, "twist");
@@ -81,10 +103,9 @@ public:
     velocity.twist.linear.y = vel_msg->linear.y;
     velocity.twist.linear.z = vel_msg->linear.z;
     velocity.twist.angular.z = vel_msg->angular.z;
-   
-    velocity_publisher_.publish(velocity);
-
-   
+ 	if (_res > 0){
+ 		velocity_publisher_.publish(velocity);
+ 	}
   }
 
   bool enableMotors(bool enable)
