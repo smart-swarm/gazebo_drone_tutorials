@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <sdf version="1.6">
-  <model name="5x5_Apriltag_Plane">
+  <model name="Apriltag_Plane">
     <static>true</static>
     <link name="Apriltag_plane_link">
       <collision name="plane_collision">
         <geometry>
           <box>
-            <size>3.9 3.9 .1</size>
+            <size>4.9 4.9 .1</size>
           </box>
         </geometry>
       </collision>
       <visual name="plane_visual">
         <geometry>
           <box>
-            <size>3.9 3.9 .1</size>
+            <size>4.9 4.9 .1</size>
           </box>
         </geometry>
 	<material>
           <script>
-            <uri>model://Apriltag_plane/materials/scripts</uri>
-            <uri>model://Apriltag_plane/materials/textures</uri>
+            <uri>model://Apriltags_plane/materials/scripts</uri>
+            <uri>model://Apriltags_plane/materials/textures</uri>
             <name>RepeatedApriltag</name>
           </script>
 	  <ambient>0.5 0.5 0.5 1</ambient>

@@ -1,22 +1,30 @@
 
 
 ###
- # @Author       : LI Jinjie
+ # @Author       : GUO ZhengLong, LI Jinjie
  # @Date         : 2020-03-06 15:26:32
  # @LastEditors  : LI Jinjie
- # @LastEditTime : 2020-03-07 11:55:27
+ # @LastEditTime : 2020-03-10 18:00:31
  # @Units        : None
  # @Description  : file content
  # @Dependencies : None
  # @NOTICE       : None
  ###
+
 #!/bin/bash
 
 cd ./catkin_ws/
 catkin_make
 source $(pwd)/devel/setup.bash
 echo "loading gazebo world..."
-roslaunch innok_heros_gazebo load_world_Apriltag_5x5.launch &
+
+# add gazebo model path
+export CATKIN_PATH=$(pwd)
+cd ./src/innok_heros_gazebo/worlds/Apriltags_world/models
+source add_path.sh
+cd $CATKIN_PATH
+
+roslaunch innok_heros_gazebo load_world_apriltag_map.launch &
 sleep 10
 echo "loading uav and car..."
 roslaunch hector_quadrotor_gazebo spawn_quadrotor_with_downward_cam.launch &
