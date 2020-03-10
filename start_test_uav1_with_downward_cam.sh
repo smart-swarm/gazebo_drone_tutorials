@@ -4,7 +4,7 @@
  # @Author       : GUO ZhengLong, LI Jinjie
  # @Date         : 2020-03-06 15:26:32
  # @LastEditors  : LI Jinjie
- # @LastEditTime : 2020-03-10 18:00:31
+ # @LastEditTime : 2020-03-10 21:06:43
  # @Units        : None
  # @Description  : file content
  # @Dependencies : None
@@ -14,7 +14,7 @@
 #!/bin/bash
 
 cd ./catkin_ws/
-catkin_make
+catkin build
 source $(pwd)/devel/setup.bash
 echo "loading gazebo world..."
 
