@@ -4,7 +4,7 @@
  # @Author       : GUO ZhengLong, LI Jinjie
  # @Date         : 2020-03-06 15:26:32
  # @LastEditors  : LI Jinjie
- # @LastEditTime : 2020-03-10 21:06:43
+ # @LastEditTime : 2020-03-12 10:42:05
  # @Units        : None
  # @Description  : file content
  # @Dependencies : None
@@ -34,6 +34,9 @@ sleep 30
 sh scripts/uav_arm.sh 1 /dev/null 2>&1 &
 echo "all uav are ready to takeoff..."
 sleep 10
+
+# launch apriltags detection node
+roslaunch apriltag_ros continuous_detection.launch &
 
 echo "simulation platform ready..."
 sleep 1
