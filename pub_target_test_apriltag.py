@@ -1,4 +1,16 @@
 #!/usr/bin/env python
+# coding=utf-8
+'''
+@Author       : LI Jinjie
+@Date         : 2020-03-13 09:48:44
+@LastEditors  : LI Jinjie
+@LastEditTime : 2020-03-13 16:02:44
+@Units        : None
+@Description  : file content
+@Dependencies : None
+@NOTICE       : 这里的Twist类型传递的的是位置信息！！！！！！
+'''
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import rospy
 # from std_msgs.msg import String
@@ -17,9 +29,9 @@ def pub_vel_des_test():
     while not rospy.is_shutdown():
         print(i)
         cmd_input = Twist()
-        t = 6.28/10.0 * (time.time() - start)  # time of one circle
-        cmd_input.linear.x = 1.2 * math.cos(t)
-        cmd_input.linear.y = 1.2 * math.sin(t)
+        t = 6.28/20.0 * (time.time() - start)  # time of one circle
+        cmd_input.linear.x = 1.5 * math.cos(t)
+        cmd_input.linear.y = 1.5 * math.sin(t)
         cmd_input.linear.z = 1.5
         cmd_input.angular.x = 0.0
         cmd_input.angular.y = 0.0

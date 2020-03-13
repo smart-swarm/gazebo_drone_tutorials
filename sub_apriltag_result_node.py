@@ -4,7 +4,7 @@
 @Author       : LI Jinjie
 @Date         : 2020-03-11 10:14:42
 @LastEditors  : LI Jinjie
-@LastEditTime : 2020-03-12 22:03:31
+@LastEditTime : 2020-03-13 11:38:37
 @Units        : Meter
 @Description  : This file is a ROS node to receive tag_detections from apriltags node.
 @Dependencies : None
@@ -79,6 +79,7 @@ class img_sub_show:
 if __name__ == '__main__':
 
     try:
+        print "Running......"
         rospy.init_node('sub_tags_detections_test', anonymous=True)
 
         img_topic_name = "/tag_detections_image"
