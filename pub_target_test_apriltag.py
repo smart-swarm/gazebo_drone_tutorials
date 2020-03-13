@@ -17,9 +17,9 @@ def pub_vel_des_test():
     while not rospy.is_shutdown():
         print(i)
         cmd_input = Twist()
-        t = 6.28/10.0 * (time.time() - start)  # 10s one circle
-        cmd_input.linear.x = 1.6 * math.cos(t)
-        cmd_input.linear.y = 1.6 * math.sin(t)
+        t = 6.28/10.0 * (time.time() - start)  # time of one circle
+        cmd_input.linear.x = 1.2 * math.cos(t)
+        cmd_input.linear.y = 1.2 * math.sin(t)
         cmd_input.linear.z = 1.5
         cmd_input.angular.x = 0.0
         cmd_input.angular.y = 0.0
