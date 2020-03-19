@@ -4,3 +4,4 @@
 /catkin_ws/.vscode
 /catkin_ws/.catkin_tools
 /catkin_ws/logs
+.pyc

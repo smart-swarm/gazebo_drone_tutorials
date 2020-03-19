@@ -4,7 +4,7 @@
 @Author       : LI Jinjie
 @Date         : 2020-03-11 10:14:42
 @LastEditors  : LI Jinjie
-@LastEditTime : 2020-03-13 11:38:37
+@LastEditTime : 2020-03-19 15:32:21
 @Units        : Meter
 @Description  : This file is a ROS node to receive tag_detections from apriltags node.
 @Dependencies : None
@@ -33,7 +33,7 @@ class tf_sub:
         self.wCamR = np.zeros((3, 3))
         # the airplane's coordination in the world frame. column vector.
         self.wBodyV = np.zeros((3, 1))
-        # pose
+        # pose--final result
         self.pose = Pose()
 
         self.tfBuffer = tf2_ros.Buffer()

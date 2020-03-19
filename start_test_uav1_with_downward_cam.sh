@@ -4,7 +4,7 @@
  # @Author       : GUO ZhengLong, LI Jinjie
  # @Date         : 2020-03-06 15:26:32
  # @LastEditors  : LI Jinjie
- # @LastEditTime : 2020-03-12 10:42:05
+ # @LastEditTime : 2020-03-19 12:14:01
  # @Units        : None
  # @Description  : file content
  # @Dependencies : None
@@ -37,6 +37,7 @@ sleep 10
 
 # launch apriltags detection node
 roslaunch apriltag_ros continuous_detection.launch &
+echo "apriltag_ros node is running..."
 
 echo "simulation platform ready..."
 sleep 1
