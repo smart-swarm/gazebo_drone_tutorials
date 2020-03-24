@@ -4,7 +4,7 @@
 @Author       : LI Jinjie
 @Date         : 2020-03-19 16:04:46
 @LastEditors  : LI Jinjie
-@LastEditTime : 2020-03-19 20:02:04
+@LastEditTime : 2020-03-19 20:14:26
 @Units        : None
 @Description  : This file defines the classes which are useful for integrated_navigation_node.py
 @Dependencies : None
@@ -39,7 +39,7 @@ class tags_info_sub:
         # the camera frame origin's coordination in the world frame
         self.wCamOrgP = np.zeros((3, 1))
         # the rotation matrix of the camera frame in the world frame
-        self.wCamR = np.zeros((3, 3))
+        self.wCamR = np.eye(3)
         # the airplane's coordination in the world frame. column vector.
         self.wBodyP = np.zeros((3, 1))
         # pose--final result
@@ -76,17 +76,3 @@ class tags_info_sub:
 
     def img_callback(self, img_data):
         self.img = self.cvBridge.imgmsg_to_cv2(img_data, 'bgr8')
-
-
-# class img_sub_show:
-#     def __init__(self, img_topic):
-#         self.cvBridge = cv_bridge.CvBridge()  # 类的实例
-#         self.img = 0
-#         self.img_topic = img_topic
-
-#     def update_para(self):
-#         self.Sub = rospy.Subscriber(
-#             self.img_topic, Image, self.img_callback, queue_size=10)
-
-#     def img_callback(self, img_data):
-#         self.img = self.cvBridge.imgmsg_to_cv2(img_data, 'bgr8')

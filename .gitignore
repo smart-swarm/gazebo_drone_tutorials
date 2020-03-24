@@ -5,3 +5,6 @@
 /catkin_ws/.catkin_tools
 /catkin_ws/logs
 .pyc
+*.cproject
+*.project
+*.settings
