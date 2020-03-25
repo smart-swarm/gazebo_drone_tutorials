@@ -4,7 +4,7 @@
 @Author       : LI Jinjie
 @Date         : 2020-03-11 10:14:42
 @LastEditors  : LI Jinjie
-@LastEditTime : 2020-03-19 22:07:24
+@LastEditTime : 2020-03-25 14:55:52
 @Units        : Meter
 @Description  : This file is a ROS node to receive tag_detections from apriltags node.
 @Dependencies : tools.py
@@ -91,8 +91,6 @@ if __name__ == '__main__':
             if i == 40:
                 try:
                     tagsInfoSub_Obj.update_para()
-
-                    tagsPub.publish(tagsInfoSub_Obj.pose)
 
                     # 修正imu的
                     imuInfoSub_Obj.wBodyP = tagsInfoSub_Obj.wBodyP
