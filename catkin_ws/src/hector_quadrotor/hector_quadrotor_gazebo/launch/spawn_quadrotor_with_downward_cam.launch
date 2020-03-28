@@ -24,6 +24,8 @@
      <arg name="use_ground_truth_for_control" value="$(arg use_ground_truth_for_control)"/>
      <arg name="use_pose_estimation" value="$(arg use_pose_estimation)"/>
    </include>
+   <include file="$(find apriltag_ros)/launch/continuous_detection.launch"/>
+   <include file="$(find robot_localization)/launch/dual_ekf.launch"/>
 </group>
 
 </launch>

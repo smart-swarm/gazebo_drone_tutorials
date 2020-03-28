@@ -4,7 +4,7 @@
 @Author       : LI Jinjie
 @Date         : 2020-03-13 09:48:44
 @LastEditors  : LI Jinjie
-@LastEditTime : 2020-03-13 16:02:44
+@LastEditTime : 2020-03-27 09:09:34
 @Units        : None
 @Description  : file content
 @Dependencies : None
@@ -23,25 +23,23 @@ def pub_vel_des_test():
     rospy.init_node('pub_vel_test')
     pub_vel_des = rospy.Publisher('/uav1/pose_cmd', Twist, queue_size=1)
     # pub_cmd = rospy.Publisher('/cmd_input', Twist, queue_size=1)
-    rate = rospy.Rate(10)
+    rate = rospy.Rate(5)
+    posNow = 0
+    sign = 1
     i = 0
     start = time.time()
     while not rospy.is_shutdown():
         print(i)
         cmd_input = Twist()
-        t = 6.28/20.0 * (time.time() - start)  # time of one circle
-        cmd_input.linear.x = 1.5 * math.cos(t)
-        cmd_input.linear.y = 1.5 * math.sin(t)
+        posNow = posNow + sign * 0.2
+        if abs(posNow) >= 2.4:
+            sign = -sign
+        cmd_input.linear.x = posNow
+        cmd_input.linear.y = 0
         cmd_input.linear.z = 1.5
         cmd_input.angular.x = 0.0
         cmd_input.angular.y = 0.0
         cmd_input.angular.z = 0.0
-
-        # msg_data = Vector3()
-        #
-        # msg_data.x  =  5 * math.cos(2*3.14/50*i)
-        # msg_data.y  =  5 * math.sin(2*3.14/50*i)
-        # msg_data.z  =  0.0
         i = i+1
         pub_vel_des.publish(cmd_input)
         # pub_cmd.publish(cmd_input)

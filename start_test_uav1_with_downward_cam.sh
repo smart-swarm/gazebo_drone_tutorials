@@ -4,7 +4,7 @@
  # @Author       : GUO ZhengLong, LI Jinjie
  # @Date         : 2020-03-06 15:26:32
  # @LastEditors  : LI Jinjie
- # @LastEditTime : 2020-03-19 12:14:01
+ # @LastEditTime : 2020-03-28 16:33:24
  # @Units        : None
  # @Description  : file content
  # @Dependencies : None
@@ -29,15 +29,14 @@ sleep 10
 echo "loading uav and car..."
 roslaunch hector_quadrotor_gazebo spawn_quadrotor_with_downward_cam.launch &
 sleep 5
+echo "apriltag_ros node is running..."
+echo "ekf node is running..."
 
-sleep 30
+
+sleep 10
 sh scripts/uav_arm.sh 1 /dev/null 2>&1 &
 echo "all uav are ready to takeoff..."
 sleep 10
-
-# launch apriltags detection node
-roslaunch apriltag_ros continuous_detection.launch &
-echo "apriltag_ros node is running..."
 
 echo "simulation platform ready..."
 sleep 1
