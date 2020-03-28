@@ -4,7 +4,7 @@
 @Author       : LI Jinjie
 @Date         : 2020-03-11 10:14:42
 @LastEditors  : LI Jinjie
-@LastEditTime : 2020-03-28 20:51:49
+@LastEditTime : 2020-03-28 23:12:28
 @Units        : Meter
 @Description  : This file is a ROS node to receive tag_detections from apriltags node.
 @Dependencies : tools.py
@@ -47,8 +47,8 @@ class imu_info_sub:
 if __name__ == '__main__':
 
     try:
-        print "integrated_navigation_node is running......"
-        rospy.init_node('integrated_navigation_node', anonymous=False)
+        print "prepare_tags_info_node is running......"
+        rospy.init_node('prepare_tags_info_node', anonymous=False)
         ns = rospy.get_namespace()
         topic_name = ns + 'tags_pose'
 

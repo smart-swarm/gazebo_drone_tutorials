@@ -25,7 +25,8 @@
      <arg name="use_pose_estimation" value="$(arg use_pose_estimation)"/>
    </include>
    <include file="$(find apriltag_ros)/launch/continuous_detection.launch"/>
-   <include file="$(find robot_localization)/launch/dual_ekf.launch"/>
+   <include file="$(find robot_localization)/launch/tags_imu_ekf.launch"/>
+   <include file ="$(find integrated_navigation)/launch/integrated_navigation_node.launch"/>
 </group>
 
 </launch>

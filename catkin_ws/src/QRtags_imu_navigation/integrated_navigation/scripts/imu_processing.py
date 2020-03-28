@@ -4,10 +4,10 @@
 @Author       : LI Jinjie
 @Date         : 2020-03-27 11:24:31
 @LastEditors  : LI Jinjie
-@LastEditTime : 2020-03-28 20:40:10
+@LastEditTime : 2020-03-28 23:06:35
 @Units        : None
 @Description  : file content
-@Dependencies : None
+@Dependencies : Used to test imu msg. Useless for normally use
 @NOTICE       : None
 '''
 import rospy

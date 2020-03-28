@@ -12,7 +12,7 @@
 
 <launch>
 
-  <rosparam command="load" file="$(find robot_localization)/params/dual_ekf.yaml" />
+  <rosparam command="load" file="$(find robot_localization)/params/tags_imu_ekf.yaml" />
 
   <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_odom" clear_params="true">
     <remap from="odometry/filtered" to="odometry/filtered_odom"/>

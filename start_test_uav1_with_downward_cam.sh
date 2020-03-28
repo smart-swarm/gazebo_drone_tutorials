@@ -4,7 +4,7 @@
  # @Author       : GUO ZhengLong, LI Jinjie
  # @Date         : 2020-03-06 15:26:32
  # @LastEditors  : LI Jinjie
- # @LastEditTime : 2020-03-28 16:33:24
+ # @LastEditTime : 2020-03-28 23:25:25
  # @Units        : None
  # @Description  : file content
  # @Dependencies : None
@@ -29,8 +29,15 @@ sleep 10
 echo "loading uav and car..."
 roslaunch hector_quadrotor_gazebo spawn_quadrotor_with_downward_cam.launch &
 sleep 5
+echo "==================================="
+sleep 1
 echo "apriltag_ros node is running..."
-echo "ekf node is running..."
+sleep 1
+echo "ekf_localization_node is running..."
+sleep 1
+echo "prepare_tags_info_node is running......"
+sleep 1
+echo "==================================="
 
 
 sleep 10

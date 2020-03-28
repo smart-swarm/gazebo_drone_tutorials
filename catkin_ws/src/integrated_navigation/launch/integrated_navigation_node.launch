@@ -1,3 +1,0 @@
-<launch>
-  <node pkg="integrated_navigation" type="integrated_navigation_node.py" name="integrated_node" clear_params="true"/>
-</launch>
