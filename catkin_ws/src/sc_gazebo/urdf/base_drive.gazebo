@@ -6,7 +6,7 @@
     <xacro:macro name="base_mecanum_gazebo">
         <gazebo>
             <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-                <robotNamespace>/mobile_base</robotNamespace>
+                <robotNamespace>$(arg car_namespace)/$(arg car_name)</robotNamespace>
                 <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
             </plugin>
         </gazebo>
@@ -57,14 +57,15 @@
 
         <gazebo>
             <plugin name="mecanum_controller" filename="libgazebo_ros_planar_move.so">
-                <commandTopic>/mobile_base/mobile_base_controller/cmd_vel</commandTopic>
-                <odometryTopic>/mobile_base/mobile_base_controller/odom</odometryTopic>
+                <robotNamespace>$(arg car_namespace)/$(arg car_name)</robotNamespace>
+                <commandTopic>cmd_vel</commandTopic>
+                <odometryTopic>odom</odometryTopic>
                 <odometryFrame>odom</odometryFrame>
                 <leftFrontJoint>join_left_front</leftFrontJoint>
                 <rightFrontJoint>join_right_front</rightFrontJoint>
                 <leftRearJoint>join_left_back</leftRearJoint>
                 <rightRearJoint>join_right_back</rightRearJoint>
-                <odometryRate>20.0</odometryRate>
+                <odometryRate>60.0</odometryRate>
                 <robotBaseFrame>base_link</robotBaseFrame>
             </plugin>
         </gazebo>

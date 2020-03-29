@@ -1,0 +1,25 @@
+<launch>
+  <arg name="car_namespace" default="B"/>
+  <arg name="car_name" default="car"/>
+  <arg name="model_file" default="base_car.urdf.xacro"/>
+  <arg name="model_name" default="carB"/>
+  <arg name="x" default="pos_x"/>
+  <arg name="y" default="pos_y"/>
+
+  <param name="robot_description" 
+      command="$(find xacro)/xacro --inorder '$(find sc_gazebo)/urdf/$(arg model_file)' car_namespace:=$(arg car_namespace) car_name:=$(arg car_name) " />
+
+  <node name="$(arg car_namespace)_$(arg car_name)_spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+      args="-unpause -urdf -param robot_description -model $(arg model_name) -x $(arg x) -y $(arg y)" respawn="false" />
+
+  <!-- <rosparam file="$(find sc_gazebo)/config/multiple_config.yaml" command="load"/> -->
+  
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/$(arg car_namespace)/$(arg car_name)" args="joint_state_controller"/>
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="$(arg car_namespace)_$(arg car_name)_robot_state_publisher">
+    <param name="publish_frequency" type="double" value="30.0" />
+    <remap from="/joint_states" to="/$(arg car_namespace)/$(arg car_name)/joint_states"/>
+  </node>
+
+</launch>

@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+<launch>
+    <rosparam file="$(find sc_gazebo)/config/multiple_A3_B3_config.yaml" command="load"/>
+    <!-- 3 car belongs to A team. -->
+    <group ns="A/car1">
+        <include file="$(find sc_gazebo)/launch/spawn_a_car.launch">
+            <arg name="car_namespace" default="A"/>
+            <arg name="car_name" default="car1"/>
+            <arg name="model_name" default="carA1"/>
+            <arg name="x" default="10"/>
+            <arg name="y" default="-10"/>
+        </include>
+    </group>
+    <group ns="A/car2">
+        <include file="$(find sc_gazebo)/launch/spawn_a_car.launch">
+            <arg name="car_namespace" default="A"/>
+            <arg name="car_name" default="car2"/>
+            <arg name="model_name" default="carA2"/>
+            <arg name="x" default="0"/>
+            <arg name="y" default="-10"/>
+        </include>
+    </group>
+    <group ns="A/car3">
+        <include file="$(find sc_gazebo)/launch/spawn_a_car.launch">
+            <arg name="car_namespace" default="A"/>
+            <arg name="car_name" default="car3"/>
+            <arg name="model_name" default="carA3"/>
+            <arg name="x" default="-10"/>
+            <arg name="y" default="-10"/>
+        </include>
+    </group>
+
+    <!-- 3 car belongs to B team. -->
+    <group ns="B/car1">
+        <include file="$(find sc_gazebo)/launch/spawn_a_car.launch">
+            <arg name="car_namespace" default="B"/>
+            <arg name="car_name" default="car1"/>
+            <arg name="model_name" default="carB1"/>
+            <arg name="x" default="10"/>
+            <arg name="y" default="10"/>
+        </include>
+    </group>
+    <group ns="B/car2">
+        <include file="$(find sc_gazebo)/launch/spawn_a_car.launch">
+            <arg name="car_namespace" default="B"/>
+            <arg name="car_name" default="car2"/>
+            <arg name="model_name" default="carB2"/>
+            <arg name="x" default="0"/>
+            <arg name="y" default="10"/>
+        </include>
+    </group>
+    <group ns="B/car3">
+        <include file="$(find sc_gazebo)/launch/spawn_a_car.launch">
+            <arg name="car_namespace" default="B"/>
+            <arg name="car_name" default="car3"/>
+            <arg name="model_name" default="carB3"/>
+            <arg name="x" default="-10"/>
+            <arg name="y" default="10"/>
+        </include>
+    </group>
+</launch>
