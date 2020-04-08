@@ -12,10 +12,14 @@
             <topicName>raw_imu</topicName>
             <rpyOffset>0 0 0</rpyOffset> <!-- deprecated -->
             <gaussianNoise>0</gaussianNoise>  <!-- deprecated -->
-            <accelDrift>0.1 0.1 0.1</accelDrift>
+            <!-- <accelDrift>0.1 0.1 0.1</accelDrift>
             <accelGaussianNoise>0.35 0.35 0.3</accelGaussianNoise>
             <rateDrift>0.1 0.1 0.1</rateDrift>
-            <rateGaussianNoise>0.05 0.05 0.015</rateGaussianNoise>
+            <rateGaussianNoise>0.05 0.05 0.015</rateGaussianNoise> -->
+            <accelDrift>0.006 0.006 0.006</accelDrift>
+            <accelGaussianNoise>0.004 0.004 0.004</accelGaussianNoise>
+            <rateDrift>0.00004 0.00004 0.00004</rateDrift>
+            <rateGaussianNoise>0.0003 0.0003 0.0003</rateGaussianNoise>
           </plugin>
 
           <plugin name="quadrotor_baro_sim" filename="libhector_gazebo_ros_baro.so">

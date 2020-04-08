@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="Apriltag_Plane">
+    <static>true</static>
+    <link name="Apriltag_plane_link">
+      <collision name="plane_collision">
+        <geometry>
+          <box>
+            <size>4.9 4.9 .1</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="plane_visual">
+        <geometry>
+          <box>
+            <size>4.9 4.9 .1</size>
+          </box>
+        </geometry>
+	<material>
+          <script>
+            <uri>model://Apriltags_plane/materials/scripts</uri>
+            <uri>model://Apriltags_plane/materials/textures</uri>
+            <name>RepeatedApriltag</name>
+          </script>
+	  <ambient>0.5 0.5 0.5 1</ambient>
+          <diffuse>0.6 0.6 0.6 1</diffuse>
+          <specular>0 0 0 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
