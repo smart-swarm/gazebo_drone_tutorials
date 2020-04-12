@@ -71,7 +71,7 @@ class RobotInterface:
 
 if __name__ == "__main__":
     rospy.init_node('CarMecanum')
-    car_mecanum = RobotInterface('/A/car2/odom', '/A/car2/cmd_vel')
+    car_mecanum = RobotInterface('/A/car0/odom', '/A/car0/cmd_vel')
     # sub_target1 = rospy.Subscriber('/target_point', Twist, car_mecanum.set_target_point)
     rate = rospy.Rate(50)
     t_start = time.time()
